@@ -1,4 +1,4 @@
-async function main() {
+exports.start = async function main() {
     const compute = require("dcp/compute");
     const wallet = require("dcp/wallet");
 
@@ -62,10 +62,3 @@ async function main() {
     job.setPaymentAccountKeystore(ks);
     await job.exec(compute.marketValue);
 }
-
-console.log("Initializing client...");
-require("dcp-client")
-    .init()
-    .then(main)
-    .finally(() => setImmediate(process.exit));
-console.log("Initialized client.");
