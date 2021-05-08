@@ -11,7 +11,4 @@ var matrix_b = [
     [30, 31]
 ];
 
-var c = 2
-var d = 3
-
-console.log(test.multiply(2, 3))
+console.log(test.multiply(matrix_a, matrix_b))
