@@ -6,14 +6,9 @@ exports.start = async function main() {
 
     let job, startTime;
 
-    job = compute.for(INPUT_A, function myfunction(num) {
-        var factorial;
-        factorial = 1;
-        for (var i = 1, _pj_a = (num + 1); (i < _pj_a); i += 1) {
-            factorial *= i;
-        }
+    job = compute.for([1*10+2*20+3*30,4*10+5*20+6*30,1*11+2*21+3*31,4*11+5*21+6*31], function myfunction(num) {
         progress();
-        return `${num}! = ${factorial}`;
+        return `${num}`;
     });
 
     job.on("accepted", function (ev) {
