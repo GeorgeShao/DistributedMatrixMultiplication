@@ -6,8 +6,8 @@ exports.start = async function main() {
 
     let job, startTime;
 
-    input = REF_INPUT
-    b_formatted_len = REF_B_FORMATTED_LEN
+    input = [13454353*10+2*20+3*30,4*10+5*20+6*30,13454353*11+2*21+3*31,4*11+5*21+6*31]
+    b_formatted_len = 2
 
     job = compute.for(input, function myfunction(num) {
         num = num

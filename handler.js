@@ -39,24 +39,23 @@ exports.run = function(a, b){
         console.log(equations)
 
         // Step 3: Send Output
-        var data = ""
         fs.readFile("./static/template_events.js", 'utf8', function (err, read_data) {
             if (err) {
                 return console.log(err);
             }
             data = read_data
-        });
-        equations = "[" + equations + "]"
-        data = data.replace("REF_INPUT", equations);
-        data = data.replace("REF_B_FORMATTED_LEN", b_formatted.length);
-        fs.writeFile("./events.js", data, 'utf8', function (err) {
-            if (err) return console.log(err);
-            var mainfunc = require('./events.js');
-            require("dcp-client")
-                .init()
-                .then(mainfunc.start)
-                .finally(() => process.exit);
-            console.log("Initialized client.");
+            equations = "[" + equations + "]"
+            data = data.replace("REF_INPUT", equations);
+            data = data.replace("REF_B_FORMATTED_LEN", b_formatted.length);
+            fs.writeFile("./events.js", data, 'utf8', function (err) {
+                if (err) return console.log(err);
+                var mainfunc = require('./events.js');
+                require("dcp-client")
+                    .init()
+                    .then(mainfunc.start)
+                    .finally(() => process.exit);
+                console.log("Initialized client.");
+            });
         });
     });
 }
