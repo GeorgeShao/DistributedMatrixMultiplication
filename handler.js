@@ -40,14 +40,15 @@ exports.run = function(a, b){
 
         // Step 3: Send Output
         equations = "[" + equations + "]"
-        var data = data.replace("INPUT_EQUATIONS", equations);
+        var data = data.replace("REF_INPUT", equations);
+        var data = data.replace("REF_B_FORMATTED_LEN", b_formatted.length);
         fs.writeFile("./events.js", data, 'utf8', function (err) {
             if (err) return console.log(err);
             var mainfunc = require('./events.js');
             require("dcp-client")
                 .init()
                 .then(mainfunc.start)
-                .finally(() => setImmediate(process.exit));
+                .finally(() => process.exit);
             console.log("Initialized client.");
         });
     });

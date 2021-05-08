@@ -6,7 +6,8 @@ exports.start = async function main() {
 
     let job, startTime;
 
-    input = [1*10+2*20+3*30,4*10+5*20+6*30,1*11+2*21+3*31,4*11+5*21+6*31]
+    input = REF_INPUT
+    b_formatted_len = REF_B_FORMATTED_LEN
 
     job = compute.for(input, function myfunction(num) {
         num = num
@@ -30,6 +31,20 @@ exports.start = async function main() {
             }s`
         );
         console.log(results)
+        // Format Final Results as Matrix / 2D Array
+        num_columns = b_formatted_len
+        var final_result = Array.from(Array(num_columns), () => new Array((results.length/num_columns)))
+        
+        row_iter = 0
+
+        for (var h = 0; h < results.length; h += num_columns){
+            for (var j = 0; j < b_formatted_len; j++){
+                final_result[j][row_iter] = results[j+h]
+            }
+            row_iter += 1
+        }
+
+        console.log(final_result)
     });
 
     job.on("readystatechange", function (arg) {
@@ -54,7 +69,7 @@ exports.start = async function main() {
                 Math.round((Date.now() - startTime) / 100) / 10
             }s) : ${ev.result}`
         );
-        results[ev.sliceNumber] = parseInt(ev.result)
+        results[ev.sliceNumber] = parseInt(ev.result);
     });
 
     job.public.name = "Distributed Matrix Multiplication";
