@@ -2,9 +2,11 @@ exports.start = async function main() {
     const compute = require("dcp/compute");
     const wallet = require("dcp/wallet");
 
+    fs = require('fs')
+
     let job, startTime;
 
-    job = compute.for([1, 10, 100, 1000, 10000, 100000], function myfunction(num) {
+    job = compute.for(INPUT_A, function myfunction(num) {
     var factorial;
     factorial = 1;
     for (var i = 1, _pj_a = (num + 1); (i < _pj_a); i += 1) {
