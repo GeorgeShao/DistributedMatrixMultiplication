@@ -6,16 +6,21 @@ exports.start = async function main() {
 
     let job, startTime;
 
-    job = compute.for(INPUT_EQUATIONS, function myfunction(num) {
+    input = [1*10+2*20+3*30,4*10+5*20+6*30,1*11+2*21+3*31,4*11+5*21+6*31]
+
+    job = compute.for(input, function myfunction(num) {
         num = num
         progress();
         return `${num}`;
     });
 
+    results = []
+
     job.on("accepted", function (ev) {
         console.log(`Job accepted by scheduler.`);
         console.log(`Job id: ${this.id}`);
         startTime = Date.now();
+        results = new Array(input.length);
     });
 
     job.on("complete", function (ev) {
@@ -24,6 +29,7 @@ exports.start = async function main() {
                 Math.round((Date.now() - startTime) / 100) / 10
             }s`
         );
+        console.log(results)
     });
 
     job.on("readystatechange", function (arg) {
@@ -48,6 +54,7 @@ exports.start = async function main() {
                 Math.round((Date.now() - startTime) / 100) / 10
             }s) : ${ev.result}`
         );
+        results[ev.sliceNumber] = parseInt(ev.result)
     });
 
     job.public.name = "Distributed Matrix Multiplication";
