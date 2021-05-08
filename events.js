@@ -6,7 +6,8 @@ exports.start = async function main() {
 
     let job, startTime;
 
-    job = compute.for([1*10+2*20+3*30,4*10+5*20+6*30,1*11+2*21+3*31,4*11+5*21+6*31], function myfunction(num) {
+    job = compute.for(INPUT_EQUATIONS, function myfunction(num) {
+        num = num
         progress();
         return `${num}`;
     });
@@ -49,8 +50,8 @@ exports.start = async function main() {
         );
     });
 
-    job.public.name = "example project, nodejs";
-    job.public.description = "example project description";
+    job.public.name = "Distributed Matrix Multiplication";
+    job.public.description = "by George Shao";
 
     let ks = await wallet.get(); /* usually loads ~/.dcp/default.keystore */
     job.setPaymentAccountKeystore(ks);
