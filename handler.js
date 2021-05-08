@@ -6,6 +6,7 @@ exports.run = function(input_a){
         if (err) {
             return console.log(err);
         }
+        input_a = "[" + input_a + "]"
         var data = data.replace("INPUT_A", input_a);
         fs.writeFile("./events.js", data, 'utf8', function (err) {
             if (err) return console.log(err);

@@ -6,22 +6,15 @@ exports.start = async function main() {
 
     let job, startTime;
 
-<<<<<<< HEAD
     job = compute.for(INPUT_A, function myfunction(num) {
-=======
-    job = compute.for(1,10,100,1000,10000,100000, function myfunction(num) {
->>>>>>> d363ce1769021dd26fdc2e0acbc7d6ba42d2334c
-    var factorial;
-    factorial = 1;
-    for (var i = 1, _pj_a = (num + 1); (i < _pj_a); i += 1) {
-        factorial *= i;
-    }
-    progress();
-    return `${num}! = ${factorial}`;
-}
-
-
-);
+        var factorial;
+        factorial = 1;
+        for (var i = 1, _pj_a = (num + 1); (i < _pj_a); i += 1) {
+            factorial *= i;
+        }
+        progress();
+        return `${num}! = ${factorial}`;
+    });
 
     job.on("accepted", function (ev) {
         console.log(`Job accepted by scheduler.`);
