@@ -30,7 +30,6 @@ exports.start = async function main() {
                 Math.round((Date.now() - startTime) / 100) / 10
             }s`
         );
-        console.log(results)
         // Format Final Results as Matrix / 2D Array
         num_columns = b_formatted_len
         var final_result = Array.from(Array(num_columns), () => new Array((results.length/num_columns)))
@@ -69,7 +68,7 @@ exports.start = async function main() {
                 Math.round((Date.now() - startTime) / 100) / 10
             }s) : ${ev.result}`
         );
-        results[ev.sliceNumber] = parseInt(ev.result);
+        results[ev.sliceNumber] = ev.result;
     });
 
     job.public.name = "Distributed Matrix Multiplication";

@@ -27,6 +27,7 @@ exports.run = function(a, b){
                 equation = ""
                 for (var j = 0; j < a[0].length; j++){
                     sum += a[i][j] * b_formatted[h][j]
+                    // console.log(a[i][j], i, j, a.length, a[0].length, b_formatted.length)
                     equation += a[i][j].toString() + "*" + b_formatted[h][j].toString()
                     if (j != a[0].length-1){
                         equation += "+"
