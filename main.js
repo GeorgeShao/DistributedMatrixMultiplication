@@ -24,7 +24,7 @@ let startTime = Date.now();
 
 csv_str = ""
 
-fs.readFile("./sample_data/numbers_verybig.csv", 'utf8', function (err, data) {
+fs.readFile("./sample_data/numbers_low.csv", 'utf8', function (err, data) {
     if (err) {
         return console.log(err);
     }
@@ -33,7 +33,7 @@ fs.readFile("./sample_data/numbers_verybig.csv", 'utf8', function (err, data) {
     var matrix_a = csv_str.split("\n").map(function(row){return row.split(",");})
     var matrix_b = csv_str.split("\n").map(function(row){return row.split(",");})
 
-    console.log(test.multiply(matrix_a, matrix_b))
+    // console.log(test.multiply(matrix_a, matrix_b))
 
     // console.log(
     //     `Finished job, runtime = ${
@@ -43,3 +43,6 @@ fs.readFile("./sample_data/numbers_verybig.csv", 'utf8', function (err, data) {
 
     distributed.run(matrix_a, matrix_b);
 });
+
+
+// node main.py --scheduler=https://scheduler-v3.distributed.computer/

@@ -76,5 +76,6 @@ exports.start = async function main() {
 
     let ks = await wallet.get(); /* usually loads ~/.dcp/default.keystore */
     job.setPaymentAccountKeystore(ks);
-    await job.exec(compute.marketValue);
+    await job.localExec(cores=7);
+    // await job.exec(compute.marketValue);
 }

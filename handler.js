@@ -37,7 +37,7 @@ exports.run = function(a, b){
             }
         }
 
-        console.log(equations)
+        // console.log(equations)
 
         // Step 3: Send Output
         fs.readFile("./static/template_events.js", 'utf8', function (err, read_data) {

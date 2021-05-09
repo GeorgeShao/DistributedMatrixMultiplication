@@ -6,8 +6,12 @@ exports.start = async function main() {
 
     let job, startTime;
 
-    input = REF_INPUT
-    b_formatted_len = REF_B_FORMATTED_LEN
+    input = [﻿1*﻿1+2
+*3,3*﻿1+4*3,﻿1*2
++2
+*4,3*2
++4*4]
+    b_formatted_len = 2
 
     job = compute.for(input, function myfunction(num) {
         num = num
@@ -76,5 +80,6 @@ exports.start = async function main() {
 
     let ks = await wallet.get(); /* usually loads ~/.dcp/default.keystore */
     job.setPaymentAccountKeystore(ks);
+    // await job.localExec(cores=7);
     await job.exec(compute.marketValue);
 }
